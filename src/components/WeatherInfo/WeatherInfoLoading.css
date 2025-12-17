@@ -1,0 +1,16 @@
+.loading-state .now-card  {
+    background: var(--clr-neutral-700);
+    display: grid;
+    place-content: center;
+    gap: 0.5rem;
+    text-align: center;
+} 
+
+.loading-state .now-card__loading-icon {
+    width: 5rem;
+    height: 1.5rem;
+}
+.loading-state .now-card__loading-icon img {
+    object-position: bottom center;
+    rotate: 180deg;
+}

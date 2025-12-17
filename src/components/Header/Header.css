@@ -1,0 +1,44 @@
+.weather-header { 
+    display: flex; 
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* below media query is for very small screens below 360px */
+@media screen and (max-width: 360px) {
+    .weather-header { 
+        justify-content: center;
+    }
+    .units-dropdown-menu { 
+        transform: translateX(20%);
+        transform-origin: 75% 0%;
+    }
+}
+
+
+/* units dropdown menu */
+.units-icon { width: 1rem; height: 1rem; }
+
+.units-switch-btn {
+    padding: 0.625rem 0.5rem;
+    text-align: left;
+}
+
+.units-submenu {
+    display: grid;
+    gap: 0.5rem;
+}
+
+.units-submenu ul {
+    display: grid;
+    gap: 0.25rem;
+}
+
+.weather-header__units button:focus-visible {
+    box-shadow: 0 0 0 1px var(--clr-neutral-900), 0 0 0 2px var(--clr-neutral-0);
+}
+.weather-header__units > button:focus-visible {
+    box-shadow: 0 0 0 3px var(--clr-neutral-900), 0 0 0 5px var(--clr-neutral-0);
+}

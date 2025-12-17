@@ -1,0 +1,61 @@
+/* hourly forecast sub section */
+.hourly-forecast {
+    padding: var(--hourly-forecast-padding);
+    border-radius: 1.25rem;
+    background: var(--clr-neutral-800);
+}
+.hourly-forecast__header {
+    display: flex;
+    justify-content: space-between;
+    margin-block-end: 1rem;
+    align-items: center;
+}
+.hourly-forecast__dropdown {
+    padding: 0.5rem 1rem;
+}
+.hourly-dropdown-btn {
+    background: var(--clr-neutral-600);
+}
+.hourly-forecast__main {
+    display: grid;
+    gap: var(--hourly-card-gap);
+}
+.hourly-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 3.75rem;
+    padding-inline: 1.25rem;
+    border: 1px solid var(--clr-neutral-600);
+    border-radius: 0.5rem;
+    background: var(--clr-neutral-700);
+}
+.hourly-card__time-symbol {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+.hourly-card__symbol {
+    width: 2.5rem;
+    height: 2.5rem
+}
+
+.hourly-dropdown-menu > button:focus-visible {
+    box-shadow: 0 0 0 1px var(--clr-neutral-900), 0 0 0 2px var(--clr-neutral-0);
+}
+
+
+/* desktop version */
+@media screen and (min-width: 70rem) {
+    .hourly-forecast {
+        height: 100%;
+        grid-row: 1 / -1;
+        grid-column: 2 / -1;
+    }
+    .hourly-forecast__main {
+        overflow-y: scroll;
+        scrollbar-width: none;
+        scroll-behavior: smooth;
+        max-height: 37rem;
+    }
+}

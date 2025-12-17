@@ -1,0 +1,18 @@
+.loading-search-icon {
+    width: 1rem;
+    height: 1rem;
+    animation: rotate 1s linear infinite;
+}
+.menu-list-item.loading {
+    display: flex;
+    justify-content: start;
+    gap: 1rem;
+}
+.menu-list-item.loading:hover {
+    background: inherit;
+}
+
+@keyframes rotate {
+    0% { rotate: 0deg; }
+    100% { rotate: 360deg; }
+}

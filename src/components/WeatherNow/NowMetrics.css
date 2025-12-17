@@ -1,0 +1,22 @@
+.now-metrics {
+    display: grid;
+    grid-template: 1fr 1fr / 1fr 1fr;
+    gap: var(--weather-now-metrics-gap);
+}
+
+.now-metrics__article {
+    display: grid;
+    gap: 1.5rem;
+    padding: 1.25rem;
+    border: 1px solid var(--clr-neutral-600);
+    border-radius: 0.75rem;
+    background: var(--clr-neutral-800);
+}
+
+
+/* tablet version */
+@media screen and (min-width: 45rem) {  
+    .now-metrics {
+        grid-template: 1fr / repeat(4, 1fr);
+    }
+}

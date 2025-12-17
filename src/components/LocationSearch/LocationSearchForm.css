@@ -1,0 +1,115 @@
+.location-search {
+    display: flex;
+    flex-direction: column;
+    gap: var(--location-search-gap);
+    max-width: 44rem;
+}
+
+.location-search__location-icon {
+    height: 2rem;
+    width: 2rem;
+    cursor: pointer;
+    opacity: 70%;
+    margin: 0 auto;
+}
+.location-search__location-icon:hover {
+    opacity: 100%;
+}
+
+.location-search__input-wrap {
+    position: relative;
+    display: flex;
+    flex-grow: 1;
+    border-radius: 0.75rem;
+}
+
+.location-search__input {
+    flex-grow: 1;
+    padding: 1rem 3rem 1rem 1.5rem;
+    border: none;
+    border-radius: 0.75rem;
+    background: var(--clr-neutral-800);
+}
+
+.location-search__input:focus {
+    box-shadow: 0 0 0 3px var(--clr-neutral-900), 0 0 0 5px var(--clr-neutral-0); 
+}
+
+.location-search__input:focus-visible {
+    box-shadow: none;
+}
+
+.location-search__input:placeholder-shown {
+    background-image: 
+        url(../../assets/images/icon-search.svg);
+    background-repeat: no-repeat;
+    background-size: 1.25rem 1.25rem;
+    background-position: 1.5rem center;
+    text-indent: 2rem;
+}
+
+.clear-location-input-btn {
+    position: absolute;
+    background: transparent;
+    color: white;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 1rem;
+    z-index: 999;
+    font-size: 2rem;
+    cursor: pointer;
+    opacity: 70%;
+}
+.clear-location-input-btn:hover {
+    opacity: 100%;
+}
+
+.location-search__btn {
+    padding: 1rem 1.5rem;
+    border-radius: 0.75rem;
+    background: var(--clr-blue-500);
+    flex-grow: 0;
+    width: 100%;
+    justify-content: center;
+}
+.location-search__btn:hover {
+    background: var(--clr-blue-700);
+}
+.location-search__btn:focus-visible {
+    box-shadow: 0 0 0 3px var(--clr-neutral-900), 0 0 0 5px var(--clr-blue-500);
+}
+
+
+.location-search-menu {
+    width: 100%;
+    left: 0;
+    top: calc(5.6rem + var(--dropdown-menu-gap) + var(--location-search-gap));
+}
+
+.location-search-menu {
+    max-height: 0;
+    transition: max-height 500ms ease-in-out;
+    overflow: hidden;
+}
+.location-search-menu.show {
+    max-height: 1000px;
+    transition: max-height 500ms ease-in-out;
+}
+
+
+/* tablet version */
+@media screen and (min-width: 35rem) {
+    .location-search {
+        flex-direction: row;
+        width: 100%;
+        justify-self: center;
+    }
+    .location-search__btn {
+        width: fit-content;
+    }
+    .location-search-menu {
+        width: calc(100% - 9.125rem - 2 * var(--location-search-gap));
+        left: calc(2rem + var(--location-search-gap));
+        top: calc(3.6rem + var(--dropdown-menu-gap));
+    }
+}

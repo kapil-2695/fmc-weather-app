@@ -1,0 +1,33 @@
+.weather-main {
+    display: flex;
+    flex-direction: column;
+    gap: var(--weather-main-gap);
+}
+
+.weather-main__heading {
+    width: 96%;
+    align-self: center;
+    text-align: center;
+}
+
+.weather-main__content {
+    display: grid;
+    gap: var(--weather-info-row-gap);
+}
+
+.weather-main__info {
+    display: grid;
+    row-gap: var(--weather-info-row-gap);
+    align-items: start;
+    align-content: start;
+}
+
+
+/* desktop version */
+@media screen and (min-width: 70rem) {
+    .weather-main__info {
+        grid-template: repeat(2, auto) / 2.0833fr 1fr;
+        row-gap: var(--weather-info-row-gap);
+        column-gap: var(--weather-info-col-gap);
+    }
+}

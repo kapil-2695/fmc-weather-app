@@ -1,0 +1,258 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+:root {
+    --clr-neutral-900: hsl(243, 96%, 9%);
+    --clr-neutral-800: hsl(243, 27%, 20%);
+    --clr-neutral-700: hsl(243, 23%, 24%);
+    --clr-neutral-600: hsl(243, 23%, 30%);
+    --clr-neutral-300: hsl(240, 6%, 70%);
+    --clr-neutral-200: hsl(250, 6%, 84%);
+    --clr-neutral-0: hsl(0, 0%, 100%);
+
+    --clr-orange-500: hsl(28, 100%, 52%);
+
+    --clr-blue-500: hsl(233, 67%, 56%);
+    --clr-blue-700: hsl(248, 70%, 36%);
+
+    --tp-1: italic normal 600 6rem/1 "DM Sans", sans-serif;
+    --tp-2: normal normal 700 3.25rem/1.2 "Bricolage Grotesque", sans-serif;
+    --tp-3: normal normal 300 2rem/1 "DM Sans", sans-serif;
+    --tp-4: normal normal 700 1.75rem/1.2 "DM Sans", sans-serif;
+    --tp-5: normal normal 600 1.25rem/1.2 "DM Sans", sans-serif;
+    --tp-5-med: normal normal 500 1.25rem/1.2 "DM Sans", sans-serif;
+    --tp-6: normal normal 500 1.125rem/1.2 "DM Sans", sans-serif;
+    --tp-7: normal normal 500 1rem/1.2 "DM Sans", sans-serif;
+    --tp-8: normal normal 500 0.875rem/1.2 "DM Sans", sans-serif;
+
+    --wrapper-gap: 3rem;
+    --wrapper-padding: 1rem 1rem 3rem;
+    --weather-main-gap: 3rem;
+    --weather-info-row-gap: 2rem;
+    --weather-info-col-gap: 2rem;
+    --location-search-gap: 0.75rem;
+    --weather-now-gap: 1.25rem;
+    --weather-now-metrics-gap: 1rem;
+    --daily-card-gap: 1rem;
+    --hourly-forecast-padding: 1.25rem 1rem;
+    --hourly-card-gap: 1rem;
+    --dropdown-menu-gap: 0.625rem;
+}
+
+html {
+    /* to make the entire content fit even on 200px screen sizes :P */
+    /* font-size clamps at 16px so no issues for bigger screens */
+    font-size: clamp(12px, 8px + 2vw, 16px);
+}
+
+/* html default reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "DM Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    color: var(--clr-neutral-0);
+}
+
+input:focus, input:focus-visible, input:focus-within,
+button:focus, button:focus-visible, button:focus-within {
+    outline: none;
+}
+
+img { width: 100%; height: 100%; object-fit: cover;}
+
+ul { list-style: none; }
+
+a { text-decoration: none; }
+
+button, *[role="button"] { 
+    border: none; 
+    background: none; 
+    color: inherit; 
+    cursor: pointer;
+    font: inherit;
+}
+
+.sr-only {
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    inset: -1px -1px;
+    color: transparent;
+    font-size: 0;
+}
+
+
+/* typography */
+.weather-header__units { font: var(--tp-8); }
+
+.weather-main__heading { font: var(--tp-2); }
+.sub-heading { font: var(--tp-5); }
+
+.location-search__input,
+.location-search__input::placeholder
+ { font: var(--tp-5-med); color: var(--clr-neutral-200); }
+
+.now-card__location { font: var(--tp-4); }
+.now-card__time { font:  var(--tp-6); }
+.now-card__temp__value { font: var(--tp-1); letter-spacing: -2%; }
+.now-metrics__name { font: var(--tp-6); color: var(--clr-neutral-200); }
+.now-metrics__value { font: var(--tp-3); }
+
+.daily-card__heading { font: var(--tp-6); }
+.daily-card__temp { font:  var(--tp-7); }
+.daily-card__temp__low { color: var(--clr-neutral-200); }
+
+.hourly-forecast__dropdown { font: var(--tp-7); }
+.hourly-card__time { font: var(--tp-5-med); }
+.hourly-card__temp { font: var(--tp-7); }
+
+.weather-header__units { font: var(--tp-7); color: var(--clr-neutral-0); }
+.menu-heading { font: var(--tp-8); color: var(--clr-neutral-300); }
+.btn { font: var(--tp-5-med); color: var(--clr-neutral-0); }
+
+
+/* components */
+
+/* general button component */
+button:focus-visible {
+    box-shadow: 0 0 0 3px var(--clr-neutral-900), 0 0 0 5px var(--clr-neutral-0); 
+}
+
+
+/* dropdown menu: button + menu setup */
+.dropdown-container {
+    display: grid;
+    justify-items: end;
+    position: relative;
+}
+button:has(.dropdown-btn) {
+    border-radius: 0.5rem;
+}
+.dropdown-btn {
+    background: var(--clr-neutral-800);
+    display: flex;
+    gap: 0.625rem;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    width: fit-content;
+    align-items: center;
+}
+.dropdown-menu {
+    display: grid;
+    gap: 0.25rem;
+    width: 13.375rem;
+    padding: 0.375rem 0.5rem;
+    border: 1px solid var(--clr-neutral-600);
+    border-radius: 0.75rem;
+    background: var(--clr-neutral-800);
+    position: absolute;
+    top: calc(100% + var(--dropdown-menu-gap));
+    right: 0;
+    box-shadow: 0 0 0.5rem 0.25rem rgba(0, 0, 0, 0.315);
+    scale: 0;
+    transition: scale 100ms ease-in-out;
+    transform-origin: 100% 0%;
+    z-index: 999;
+    visibility: hidden;
+    pointer-events: none;
+}
+.dropdown-menu.show {
+    scale: 1;
+    visibility: visible;
+    pointer-events: auto;
+    
+}
+.dropdown-menu li {
+    cursor: pointer;
+}
+.dropdown-icon { width: 1.1rem; height: 0.75rem; align-self: start;}
+
+
+/* dropdown-menu submenu styling */
+.submenu-heading {
+    padding: 0.375rem 0.5rem 0;
+}
+.menu-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.625rem 0.5rem;
+    border-radius: 0.5rem;
+}
+
+.menu-list-item:has(.checkmark),
+.menu-list-item.checked, 
+.menu-list-item:hover {
+    background: var(--clr-neutral-700)
+}
+
+.checkmark { 
+    width: 1rem; 
+    height: 0.875rem; 
+}
+
+hr.menu-sep { 
+    border: none; 
+    height: 1px; 
+    background: var(--clr-neutral-600) 
+}
+
+
+
+/* layout design - mobile first */
+body {
+    display: flex;
+    background: var(--clr-neutral-900);
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    margin: 0 auto;
+    gap: var(--wrapper-gap);
+    padding: var(--wrapper-padding);
+}
+
+/* Api Error page */
+.weather-api-error {
+    display: grid;
+    gap: 1rem;
+    justify-items: center;
+    max-width: 30rem;
+    margin: 0 auto;
+    text-align: center;
+}
+
+
+/* tablet version */
+@media screen and (min-width: 45rem) {
+    :root {
+        --wrapper-padding: 1.5rem 1.5rem 5rem;
+        --location-search-gap: 1rem;
+        --weather-now-metrics-gap: 1.25rem;
+        --hourly-forecast-padding: 1.5rem 1.5rem;
+    }
+    .wrapper {
+        max-width: 56rem;
+    }   
+}
+
+
+/* desktop version */
+@media screen and (min-width: 70rem) {
+    :root {
+        --wrapper-gap: 4rem;
+        --wrapper-padding: 2rem 3rem 5rem;
+        --weather-main-gap: 4rem;
+        --weather-info-row-gap: 3rem;
+        --weather-info-col-gap: 2rem;
+        --weather-now-gap: 2rem;
+        --weather-now-metrics-gap: 1.5rem;
+    }
+    .wrapper {
+        max-width: 82rem;
+    }
+}
