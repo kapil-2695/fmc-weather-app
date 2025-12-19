@@ -41,6 +41,7 @@ export default function App() {
 
 
     React.useEffect(() => {
+        setWeatherData(null)
         fetchWeatherData(location)
             .then((data) => setWeatherData(data))
             .catch((error) => {

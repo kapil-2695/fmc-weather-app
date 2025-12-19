@@ -60,7 +60,6 @@ export default function LocationSearchForm({ setLocation, setWeatherData }) {
             <button
                 key={result.id} className="menu-list-item" type="button"
                 onClick={() => {
-                    setWeatherData(null)
                     setLocation({
                         latitude: result.latitude, longitude: result.longitude,
                         timezone: result.timezone, location: locationName
