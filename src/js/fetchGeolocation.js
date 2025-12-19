@@ -31,11 +31,12 @@ export function getLocation() {
 
 
 async function reverseGeocoding(latitude, longitude) {
-    const apiKey = import.meta.env.VITE_GEOAPIFY_API_KEY
-    const url = `https://api.geoapify.com/v1/geocode/reverse?lat=${latitude}&lon=${longitude}&apiKey=${apiKey}`
+    const url = `/.netlify/functions/geoapify?lat=${latitude}&long=${longitude}`
+
     try {
         const response = await fetch(url)
         const data = await response.json()
+        console.log(data)
         const { city, state, country } = data["features"][0]["properties"]
         return `${city}, ${state} ${country}`
     }
