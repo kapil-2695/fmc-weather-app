@@ -13,7 +13,7 @@ export function getLocation() {
                 } catch (error) {
                     return resolve({
                         timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-                        latitude, longitude, location: "Earth"
+                        latitude, longitude, location: "-"
                     })
                 }
                 return resolve({

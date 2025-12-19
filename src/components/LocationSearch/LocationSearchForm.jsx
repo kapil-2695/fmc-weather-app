@@ -49,9 +49,12 @@ export default function LocationSearchForm({ setLocation, setWeatherData }) {
     }
 
     const searchResultComponents = results.map((result) => {
-        const locationName = result.admin1
+        const locationName = result.admin1 && result.country
             ? `${result.name}, ${result.admin1} - ${result.country}`
-            : `${result.name}, ${result.country}`
+            : result.country
+                ? `${result.name}, ${result.country}`
+                : `${result.name}`
+
 
         return (
             <button
