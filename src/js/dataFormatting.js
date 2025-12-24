@@ -93,6 +93,7 @@ export function formatWeatherData(data, location) {
         daily: formatDailyWeatherData(data),
         hourly: formatHourlyWeatherData(data),
         timezone: data["timezone"],
+        multipleTimezones: !location.timezone,
         location
     }
 }

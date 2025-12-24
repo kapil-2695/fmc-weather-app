@@ -67,7 +67,7 @@ export default function LocationSearchForm({ setLocation, setWeatherData }) {
                     toggleResultsBox(false)
                 }}
             >
-                <p>{locationName}</p>
+                <p>{locationName}{result.multipleTimezones ? "(Timezone used: GMT)" : ""}</p>
             </button>
         )
     })
