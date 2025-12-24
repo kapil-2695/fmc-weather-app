@@ -14,6 +14,7 @@ export default function LocationSearchForm({ setLocation, setWeatherData }) {
     const [query, setQuery] = React.useState("")
     const [results, setResults] = React.useState([])
     const [loading, setLoading] = React.useState(false)
+    const searchBoxRef = React.useRef(null)
     const [open, toggleResultsBox, searchResultsRef] = useDropdownToggle(true)
 
     function showResultBox() {
@@ -46,6 +47,13 @@ export default function LocationSearchForm({ setLocation, setWeatherData }) {
                 setLocation(data)
             })
             .catch((error) => console.log(error.message))
+    }
+
+    function handleClick() {
+        searchBoxRef.current?.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        })
     }
 
     const searchResultComponents = results.map((result) => {
@@ -99,6 +107,7 @@ export default function LocationSearchForm({ setLocation, setWeatherData }) {
                 <input className="location-search__input" type="text"
                     placeholder="Search for a place..."
                     onChange={handleSearchInput} value={query}
+                    ref={searchBoxRef} onClick={handleClick}
                 />
                 {query && (
                     <button

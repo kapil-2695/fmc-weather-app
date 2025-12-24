@@ -29,6 +29,7 @@
     border: none;
     border-radius: 0.75rem;
     background: var(--clr-neutral-800);
+    scroll-margin-block-start: 1rem;
 }
 
 .location-search__input:focus {
