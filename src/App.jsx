@@ -49,7 +49,7 @@ export default function App() {
                 setWeatherData(null)
                 console.log("Something went wrong. API error. " + error.message)
             })
-    }, [location])
+    }, [location, apiError])
 
 
     return (
@@ -62,7 +62,7 @@ export default function App() {
                     units={units}
                     setLocation={setLocation}
                 />
-                : <ApiErrorPage setLocation={setLocation} setApiError={setApiError} />
+                : <ApiErrorPage setApiError={setApiError} />
             }
         </>
     )

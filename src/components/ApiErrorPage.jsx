@@ -3,11 +3,9 @@ import React from "react"
 import iconError from "../assets/images/icon-error.svg"
 import iconRetry from "../assets/images/icon-retry.svg"
 
-export default function ApiErrorPage({ setLocation, setApiError }) {
+export default function ApiErrorPage({ setApiError }) {
     function resetLocation() { /* runs weather api fetch effect again */
         setApiError(false)
-        setLocation(prev => ({ ...prev }))
-        console.log("reset ran")
     }
 
 
