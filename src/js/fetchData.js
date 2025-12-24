@@ -1,12 +1,12 @@
 import { formatWeatherData } from "./dataFormatting"
 
 
-export async function fetchSearchResults(name) {
-    const url = `https://geocoding-api.open-meteo.com/v1/search?name=${name}&count=5&language=en&format=json`
+export async function fetchSearchResults(name, limit = 5) {
+    const url = `/.netlify/functions/geoapifyAddressSearch?text=${name}&limit=${limit}`
     try {
         const response = await fetch(url)
         const data = await response.json()
-        return data?.results || []
+        return data?.features || []
     }
     catch (err) {
         throw new Error("Something went wrong with the search.")
@@ -23,7 +23,7 @@ export async function fetchWeatherData(location) {
         daily: "temperature_2m_max,temperature_2m_min,weather_code",
         hourly: "temperature_2m,weather_code",
         current: "temperature_2m,relative_humidity_2m,wind_speed_10m,precipitation,apparent_temperature,weather_code",
-        timezone: location.timezone || "GMT",
+        timezone: location.timezone,
     })
     url.search = searchParams.toString()
     const urlString = url.toString()

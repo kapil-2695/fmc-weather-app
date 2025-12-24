@@ -31,7 +31,7 @@ export function getLocation() {
 
 
 async function reverseGeocoding(latitude, longitude) {
-    const url = `/.netlify/functions/geoapify?lat=${latitude}&long=${longitude}`
+    const url = `/.netlify/functions/geoapifyReverseGeocode?lat=${latitude}&long=${longitude}`
 
     try {
         const response = await fetch(url)

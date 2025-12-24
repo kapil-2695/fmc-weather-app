@@ -49,25 +49,27 @@ export default function LocationSearchForm({ setLocation, setWeatherData }) {
     }
 
     const searchResultComponents = results.map((result) => {
-        const locationName = result.admin1 && result.country
-            ? `${result.name}, ${result.admin1} - ${result.country}`
-            : result.country
-                ? `${result.name}, ${result.country}`
-                : `${result.name}`
-
+        const data = result.properties
+        let locationName = "";
+        if (data.result_type === "postcode")
+            locationName = `${data.city}, ${data.state} - ${data.country}`
+        else if (data.result_type === "state")
+            locationName = `${data.state} - ${data.country}`
+        else
+            locationName = `${data.country}`
 
         return (
             <button
-                key={result.id} className="menu-list-item" type="button"
+                key={data.place_id} className="menu-list-item" type="button"
                 onClick={() => {
                     setLocation({
-                        latitude: result.latitude, longitude: result.longitude,
-                        timezone: result.timezone, location: locationName
+                        latitude: data.lat, longitude: data.lon,
+                        timezone: data.timezone.name, location: locationName
                     })
                     toggleResultsBox(false)
                 }}
             >
-                <p>{locationName}{result.multipleTimezones ? "(Timezone used: GMT)" : ""}</p>
+                <p>{locationName}</p>
             </button>
         )
     })
