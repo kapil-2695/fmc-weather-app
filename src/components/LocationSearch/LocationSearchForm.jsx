@@ -59,7 +59,7 @@ export default function LocationSearchForm({ setLocation, setWeatherData }) {
     const searchResultComponents = results.map((result) => {
         const data = result.properties
         let locationName = "";
-        if (data.result_type === "postcode")
+        if (data.result_type === "postcode" || data.result_type === "city")
             locationName = `${data.city}, ${data.state} - ${data.country}`
         else if (data.result_type === "state")
             locationName = `${data.state} - ${data.country}`
